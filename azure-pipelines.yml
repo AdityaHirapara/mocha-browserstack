@@ -24,7 +24,7 @@ steps:
   displayName: 'Set build name yml'
 - script: |
     npm install
-    npm run sample-test
+    npm run sample-local-test
   displayName: 'npm install and test'
 - task: BrowserStackResults@1
   inputs:
