@@ -22,10 +22,10 @@ steps:
 - bash: |          
     sed -i -e "s/buildName:.*/buildName: $BROWSERSTACK_BUILD_NAME/g" browserstack.yml
   displayName: 'Set build name yml'
-- task: BrowserStackResults@1
-  inputs:
-    browserstackProduct: 'automate'
 - script: |
     npm install
     npm run sample-test
   displayName: 'npm install and test'
+- task: BrowserStackResults@1
+  inputs:
+    browserstackProduct: 'automate'
