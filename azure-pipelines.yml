@@ -21,11 +21,16 @@ steps:
     BrowserStackServiceEndPoint: 'BS prod'
 - bash: |          
     sed -i -e "s/buildName:.*/buildName: $BROWSERSTACK_BUILD_NAME/g" browserstack.yml
+  workingDirectory: "/Users/aditya/test-observability-samples/test-samples/nodejs/mocha"
   displayName: 'Set build name yml'
-- script: |
-    npm install
-    npm run sample-local-test
-  displayName: 'npm install and test'
+# - script: |
+#     npm install
+#     npm run sample-local-test
+#   displayName: 'npm install and test'
+- bash: |
+    npm run e2e-test-mocha-p1-bs || true
+  workingDirectory: "/Users/aditya/test-observability-samples/test-samples/nodejs/mocha"
+  displayName: "Run Test Observability Samples - Local System"
 - task: BrowserStackResults@1
   inputs:
     browserstackProduct: 'automate'
